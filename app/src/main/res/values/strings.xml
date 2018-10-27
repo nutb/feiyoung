@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">宽带破解</string>
+    <string name="route_account">路由器账户：</string>
+    <string name="route_password">路由器密码：</string>
+    <string name="login">登录</string>
+    <string name="young_account">宽带账户：</string>
+    <string name="young_password">宽带密码：</string>
+</resources>
