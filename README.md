@@ -6,4 +6,4 @@
 # 前提
 
 * 路由器必须支持远程连接，比如OpenWrt、LEDE等固件的路由器
-* 必须按照CURL，OpenWrt可以使用`opkg install curl`,因为需要CURL发送数据包。
+* 必须安装CURL，OpenWrt可以使用`opkg install curl`,因为需要CURL发送数据包。
