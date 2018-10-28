@@ -14,6 +14,8 @@ import org.apache.commons.lang3.StringUtils;
  */
 public class CrulLogin {
 
+    private static final String RESTART_NETWORK = "/etc/init.d/network restart";
+
     private static final String NET_STATUS = "curl -X GET http://captive.apple.com/hotspot-detect.html -H 'User-Agent: CDMA+WLAN(macos)'";
 
     private static final String GET_LOGIN_URL = "curl -X GET '%s' -H 'User-Agent: CDMA+WLAN(macos)'";
@@ -23,6 +25,8 @@ public class CrulLogin {
     GenerUtils generUtils = new GenerUtils();
 
     public void login(String kd_username, String kd_password){
+
+            generUtils.curl(RESTART_NETWORK);
 
             String s = generUtils.curl(NET_STATUS);
             if (s.indexOf("Success")!=-1){
