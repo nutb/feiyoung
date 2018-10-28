@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putString("kd_userName", kd_user);
             editor.putString("kd_userPassword", kd_pass);
             editor.commit();
-
+            Toast.makeText(MainActivity.this, "登录中", Toast.LENGTH_LONG);
             KdLogin kdLogin = new KdLogin(MainActivity.this, kd_user, kd_pass);
             new Thread(kdLogin).start();
         }

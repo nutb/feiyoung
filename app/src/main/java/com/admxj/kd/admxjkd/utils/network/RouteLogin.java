@@ -10,6 +10,9 @@ import com.admxj.kd.admxjkd.utils.GenerUtils;
 
 public class RouteLogin implements Runnable{
 
+    private static final String RESTART_NETWORK = "/etc/init.d/network restart";
+
+
     private String username;
     private String password;
     private Context context;
@@ -40,7 +43,7 @@ public class RouteLogin implements Runnable{
                 kd_button.setEnabled(true);
                 Toast.makeText(context, "登陆成功", Toast.LENGTH_SHORT).show();
                 Looper.loop();
-
+                generUtils.curl(RESTART_NETWORK);
             }else{
                 Log.i("RouteLogin","登陆失败：" + curl);
                 Looper.prepare();
@@ -51,7 +54,7 @@ public class RouteLogin implements Runnable{
             e.printStackTrace();
             Log.i("RouteLogin","登陆异常");
             Looper.prepare();
-            Toast.makeText(context, "子线程显示", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "登陆异常", Toast.LENGTH_SHORT).show();
             Looper.loop();
         }finally {
             Looper.prepare();
