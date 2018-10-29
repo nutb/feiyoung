@@ -2,7 +2,10 @@ package com.admxj.kd.admxjkd.utils.network;
 
 import android.content.Context;
 import android.os.Looper;
+import android.transition.Visibility;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.admxj.kd.admxjkd.utils.GenerUtils;
@@ -25,13 +28,15 @@ public class KdLogin implements Runnable {
     private Context context;
     private String kd_user;
     private String kd_pass;
+    private TextView result_View;
 
     GenerUtils generUtils = new GenerUtils();
 
-    public KdLogin(Context context, String kd_user, String kd_pass) {
+    public KdLogin(Context context, String kd_user, String kd_pass, TextView result_View) {
         this.context = context;
         this.kd_user = kd_user;
         this.kd_pass = kd_pass;
+        this.result_View = result_View;
     }
 
     @Override
@@ -47,7 +52,7 @@ public class KdLogin implements Runnable {
                 Log.i("CrulLogin","已在线状态");
                 return;
             }
-            System.out.println(s);
+            Log.i("CrulLogin",s);
             s = StringUtils.substringBetween(s,"<NextURL>","</NextURL>");
             Log.i("CrulLogin","URL" + s);
             s = StringUtils.substringBefore(s, "?userip=100.64")+"/"+StringUtils.substringAfter(s, "http://58.53.199.144:8001")+"&aidcauthtype=0";
@@ -64,7 +69,8 @@ public class KdLogin implements Runnable {
 
             System.out.println(s);
             Looper.prepare();
-            Toast.makeText(context,s,Toast.LENGTH_LONG);
+            result_View.setVisibility(View.VISIBLE);
+//            Toast.makeText(context,s,Toast.LENGTH_LONG);
             Looper.loop();
 
             String logout = StringUtils.substringBetween(s, "<LogoffURL><![CDATA[","]]></LogoffURL>");

@@ -89,6 +89,14 @@
                 android:text="@string/login"
                 android:id="@+id/kd_login_button"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="登陆成功"
+                android:layout_marginLeft="30dp"
+                android:textColor="@color/colorAccent"
+                android:visibility="invisible"
+                android:id="@+id/result_View"/>
         </LinearLayout>
     </LinearLayout>
 

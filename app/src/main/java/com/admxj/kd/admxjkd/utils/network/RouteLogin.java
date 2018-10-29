@@ -36,6 +36,8 @@ public class RouteLogin implements Runnable{
         try {
             String curl = generUtils.curl("ls /etc/config/network");
             Log.d("RouteLogin", curl);
+            String s = generUtils.curl(RESTART_NETWORK);
+            Log.i("RouteLogin","路由器重新获取ip：" + s);
             if (curl.indexOf("network")>0){
 
                 Log.i("RouteLogin","登陆成功：" + curl);
@@ -43,7 +45,7 @@ public class RouteLogin implements Runnable{
                 kd_button.setEnabled(true);
                 Toast.makeText(context, "登陆成功", Toast.LENGTH_SHORT).show();
                 Looper.loop();
-                generUtils.curl(RESTART_NETWORK);
+
             }else{
                 Log.i("RouteLogin","登陆失败：" + curl);
                 Looper.prepare();

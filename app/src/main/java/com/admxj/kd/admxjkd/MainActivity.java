@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.admxj.kd.admxjkd.utils.DestHost;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText kd_username;
     private EditText kd_password;
     private Button kd_login_button;
+    private TextView result_View;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         kd_username = findViewById(R.id.kd_username);
         kd_password = findViewById(R.id.kd_password);
         kd_login_button = findViewById(R.id.kd_login_button);
+        result_View = findViewById(R.id.result_View);
 
         kd_login_button.setEnabled(false);
 
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editor.putString("kd_userPassword", kd_pass);
             editor.commit();
             Toast.makeText(MainActivity.this, "登录中", Toast.LENGTH_LONG);
-            KdLogin kdLogin = new KdLogin(MainActivity.this, kd_user, kd_pass);
+            KdLogin kdLogin = new KdLogin(MainActivity.this, kd_user, kd_pass, result_View);
             new Thread(kdLogin).start();
         }
 
